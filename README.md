@@ -1,6 +1,6 @@
 # SysTrack — AndesTech Solutions S.R.L.
 
-Plataforma web académica para gestión de infraestructura tecnológica, mesa de ayuda, activos y mantenimiento. Esta versión 0.3 incorpora navegación superior contextual, tema claro/oscuro persistente, creación automática de correos por rol y nombre, y permisos de consulta para coordinación de mantenimiento.
+Plataforma web académica para gestión de infraestructura tecnológica, mesa de ayuda, activos y mantenimiento. Esta versión 0.4 incorpora un tema claro gris humo de baja luminosidad, formularios con mayor profundidad Liquid Glass, animación del emblema ST y operaciones completas para editar y eliminar intervenciones de mantenimiento pendientes.
 
 ## Requisitos
 - Node.js 18 o superior
@@ -75,3 +75,14 @@ Las rutas protegidas requieren `Authorization: Bearer <token>`.
 - Ejecutar pruebas de integración y aceptación con MySQL local antes de la demostración.
 - Para producción se requiere HTTPS, CORS restrictivo, rate limiting, auditoría, copias de seguridad, recuperación de contraseña y revisión OWASP.
 - La interfaz usa HTML/CSS/JavaScript servido por Express; no utiliza React/Vite.
+
+
+## Actualización v0.4 — Refinamiento visual y mantenimiento
+- El tema claro utiliza una escala de grises humo/piedra; evita fondos blancos puros y mantiene superficies translúcidas.
+- Los formularios de registro y edición incorporan capas, brillos sutiles, foco visible y transición de entrada.
+- El emblema ST del Overview incorpora movimiento flotante, halo y órbita animada (respeta `prefers-reduced-motion`).
+- El coordinador y el administrador pueden editar o eliminar mantenimientos pendientes. Las intervenciones completadas o canceladas quedan protegidas contra modificaciones/eliminación.
+- Se corrige el tratamiento de fechas MySQL en la tabla y en el formulario de edición.
+
+### Aplicación
+No requiere migración de base de datos respecto a v0.3. Reemplaza los archivos del proyecto, conserva `.env`, ejecuta `npm install` y `npm start`.

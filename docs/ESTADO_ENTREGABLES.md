@@ -35,3 +35,12 @@ Este paquete es una base de trabajo versionada como 0.2. No debe presentarse com
 - Se agregan pruebas unitarias para normalización de correos.
 - No requiere migración de base de datos respecto a v0.2.
 - Pendiente: ejecutar pruebas Jest e integración con MySQL en el entorno local.
+
+
+## Actualización del cuarto commit — v0.4
+- Tema claro rediseñado como gris humo, sin blanco puro.
+- Formularios con mayor identidad Liquid Glass y transiciones.
+- Emblema ST animado en Overview.
+- Edición y eliminación de intervenciones pendientes desde la interfaz y API.
+- Sin migración de base de datos.
+- Pendiente: prueba de flujos CRUD contra MySQL local y validación manual en navegador.

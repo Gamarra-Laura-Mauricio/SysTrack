@@ -1,4 +1,4 @@
-# Manual de usuario — SysTrack v0.3
+# Manual de usuario — SysTrack v0.4
 
 ## Navegación y apariencia
 La navegación principal se encuentra en una barra superior que acompaña al usuario al desplazarse. El botón **Tema** alterna entre apariencia oscura y clara; la preferencia queda guardada en el navegador.
@@ -38,3 +38,9 @@ Seleccionar el icono de salida en la barra superior. No compartir credenciales.
 ## Consideraciones
 Los correos generados son identificadores internos de SysTrack; no se crea automáticamente una cuenta real de Gmail. La contraseña inicial debe comunicarse al usuario por un canal seguro.
 La interfaz es un prototipo académico. Antes de usarlo con datos reales, completar pruebas, revisar permisos y aplicar medidas de seguridad de producción.
+
+
+## Mantenimiento de intervenciones — v0.4
+El administrador general y el coordinador pueden utilizar las acciones **Editar** y **Eliminar** en intervenciones pendientes. La edición permite cambiar activo, tipo, fecha, técnico y descripción. La eliminación solicita confirmación. Las intervenciones completadas o canceladas no se pueden modificar ni eliminar.
+
+El tema claro ahora utiliza una paleta gris humo para reducir el brillo de pantalla. La preferencia visual se conserva en el navegador.
