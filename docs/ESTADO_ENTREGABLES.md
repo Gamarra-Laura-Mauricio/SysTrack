@@ -44,3 +44,12 @@ Este paquete es una base de trabajo versionada como 0.2. No debe presentarse com
 - Edición y eliminación de intervenciones pendientes desde la interfaz y API.
 - Sin migración de base de datos.
 - Pendiente: prueba de flujos CRUD contra MySQL local y validación manual en navegador.
+
+
+## Actualización v0.5 — CRUD y programación de mantenimiento
+- Se incorporaron acciones de edición y eliminación en activos, incidentes, usuarios y mantenimientos, con restricciones por rol y estado.
+- Se corrigió el envío del formulario modal: se reemplazó `method=dialog` por `method=post` y se centralizó el manejador `submit` para evitar el cierre nativo del diálogo antes de procesar la petición.
+- La programación de mantenimiento convierte los identificadores de activo y técnico a números y valida la respuesta del servidor.
+- Se añadieron rutas PUT/DELETE para incidentes y usuarios. La eliminación de cuentas con registros relacionados se rechaza con un mensaje claro; se recomienda desactivar esas cuentas.
+- La edición de activos ahora también actualiza `asset_code`.
+- Pendiente: ejecutar pruebas de integración con la base MySQL local y verificar los permisos con cuentas de cada rol.

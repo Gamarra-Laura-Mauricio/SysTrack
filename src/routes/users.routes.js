@@ -44,6 +44,8 @@ router.post('/', allowRoles('ADMIN'), async (req, res, next) => {
   }
 });
 
+router.put('/:id', allowRoles('ADMIN'), async (req,res,next)=>{try{const {full_name,role,password}=req.body||{};const allowed=['ADMIN','COORDINATOR','TECHNICIAN','REQUESTER'];if(!full_name?.trim()||!allowed.includes(role))return res.status(400).json({message:'Nombre y rol válido son obligatorios.'});if(password&&password.length<8)return res.status(400).json({message:'La contraseña debe tener al menos 8 caracteres.'});const [found]=await db.execute('SELECT id FROM users WHERE id=?',[req.params.id]);if(!found.length)return res.status(404).json({message:'Usuario no encontrado.'});if(password){const hash=await bcrypt.hash(password,12);await db.execute('UPDATE users SET full_name=?,role=?,password_hash=? WHERE id=?',[full_name.trim(),role,hash,req.params.id]);}else{await db.execute('UPDATE users SET full_name=?,role=? WHERE id=?',[full_name.trim(),role,req.params.id]);}res.json({message:'Usuario actualizado.'});}catch(e){next(e);}});
+router.delete('/:id', allowRoles('ADMIN'), async(req,res,next)=>{try{if(Number(req.params.id)===Number(req.user.id))return res.status(400).json({message:'No puedes eliminar tu propia cuenta.'});const [r]=await db.execute('DELETE FROM users WHERE id=?',[req.params.id]);if(!r.affectedRows)return res.status(404).json({message:'Usuario no encontrado.'});res.json({message:'Usuario eliminado.'});}catch(e){if(e.code==='ER_ROW_IS_REFERENCED_2')return res.status(409).json({message:'No se puede eliminar: el usuario tiene registros asociados. Puedes desactivarlo.'});next(e);}});
 router.patch('/:id/active', allowRoles('ADMIN'), async (req, res, next) => {
   try {
     const active = req.body?.active;
