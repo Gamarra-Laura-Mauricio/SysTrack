@@ -25,3 +25,13 @@ Este paquete es una base de trabajo versionada como 0.2. No debe presentarse com
 - Directorio del equipo técnico con estado calculado `DISPONIBLE`, `ASIGNADO` o `INACTIVO` y cantidad de trabajos pendientes.
 - Asignación de cada mantenimiento a un técnico activo; los técnicos solo pueden completar sus propias asignaciones.
 - Para actualizar una base de datos creada con v0.1, ejecutar una vez `database/migration_v02.sql`.
+
+
+## Actualización del tercer commit — v0.3
+- Navegación superior fija y responsive; se retira la barra lateral izquierda.
+- Selector de tema claro/oscuro con preferencia persistente.
+- Generación automática del correo por rol y primer nombre, con sufijo para nombres repetidos.
+- Consulta del equipo técnico habilitada para ADMIN y COORDINATOR; gestión de cuentas continúa exclusiva de ADMIN.
+- Se agregan pruebas unitarias para normalización de correos.
+- No requiere migración de base de datos respecto a v0.2.
+- Pendiente: ejecutar pruebas Jest e integración con MySQL en el entorno local.

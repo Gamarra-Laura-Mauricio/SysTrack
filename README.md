@@ -1,6 +1,6 @@
 # SysTrack — AndesTech Solutions S.R.L.
 
-Plataforma web académica para gestión de infraestructura tecnológica, mesa de ayuda, activos y mantenimiento. Esta versión 0.2 incorpora una interfaz visual renovada de estilo glassmorphism/liquid glass, administración de usuarios y disponibilidad del equipo técnico.
+Plataforma web académica para gestión de infraestructura tecnológica, mesa de ayuda, activos y mantenimiento. Esta versión 0.3 incorpora navegación superior contextual, tema claro/oscuro persistente, creación automática de correos por rol y nombre, y permisos de consulta para coordinación de mantenimiento.
 
 ## Requisitos
 - Node.js 18 o superior
@@ -14,6 +14,9 @@ Plataforma web académica para gestión de infraestructura tecnológica, mesa de
 5. Crea el usuario demo: `npm run seed`.
 6. Inicia con `npm start` o `npm run dev`.
 7. Abre `http://localhost:3000`.
+
+## Actualización desde SysTrack v0.2
+No requiere cambios de esquema. Conserva tu `.env`, reemplaza los archivos por esta versión y reinicia el servidor con `npm start`.
 
 ## Actualización desde SysTrack v0.1
 Si ya importaste la base de datos anterior, **no vuelvas a importar el esquema completo**. Ejecuta una sola vez `database/migration_v02.sql` sobre `systrack_db` para habilitar el nuevo rol `COORDINATOR`. Después reemplaza los archivos del proyecto por esta versión, conserva tu `.env`, ejecuta `npm install` si corresponde y reinicia el servidor.
@@ -31,6 +34,9 @@ Si ya importaste la base de datos anterior, **no vuelvas a importar el esquema c
 El estado del técnico se calcula automáticamente: `INACTIVO` si su cuenta está desactivada, `ASIGNADO` si tiene uno o más mantenimientos pendientes y `DISPONIBLE` si no tiene pendientes. No se almacena como un estado manual que pueda quedar desactualizado.
 
 ## Funcionalidades
+- Navegación superior horizontal tipo command bar, persistente durante el desplazamiento.
+- Selector de tema claro/oscuro con preferencia guardada en el navegador.
+- Correo automático por rol: `admin`, `coord`, `tec` o `usr` + primer nombre + `@gmail.com`; se agrega sufijo numérico si ya existe.
 - Autenticación JWT y contraseñas con bcrypt.
 - Directorio de usuarios: creación de administradores, coordinadores, técnicos y solicitantes; activación/desactivación de cuentas.
 - Vista de equipo técnico con disponibilidad calculada y cantidad de trabajos pendientes.
@@ -42,7 +48,7 @@ El estado del técnico se calcula automáticamente: `INACTIVO` si su cuenta est�
 
 ## API principal
 - `POST /api/auth/login`
-- `GET|POST /api/users` (solo `ADMIN`)
+- `GET /api/users` (ADMIN y COORDINATOR); `POST /api/users` (solo ADMIN)
 - `PATCH /api/users/:id/active` (solo `ADMIN`)
 - `GET /api/maintenances/technicians` (ADMIN y COORDINATOR)
 - `GET|POST /api/maintenances` (consulta autenticada; programación ADMIN y COORDINATOR)
@@ -64,6 +70,7 @@ Las rutas protegidas requieren `Authorization: Bearer <token>`.
 - `tests`: pruebas iniciales.
 
 ## Consideraciones
+- Los correos generados son identificadores de acceso dentro de SysTrack; el sistema no crea buzones reales en Gmail ni verifica que existan.
 - Prototipo académico; no desplegado en una organización real.
 - Ejecutar pruebas de integración y aceptación con MySQL local antes de la demostración.
 - Para producción se requiere HTTPS, CORS restrictivo, rate limiting, auditoría, copias de seguridad, recuperación de contraseña y revisión OWASP.
