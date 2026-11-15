@@ -1,0 +1,13 @@
+@startuml
+node "Equipo del usuario" {
+ artifact "Navegador web" as Browser
+}
+node "Servidor de aplicación" {
+ artifact "Node.js + Express" as App
+ artifact "Archivos estáticos" as Static
+}
+database "Servidor MySQL" as MySQL
+Browser --> App : HTTPS/HTTP en entorno local
+App --> Static
+App --> MySQL : TCP 3306
+@enduml

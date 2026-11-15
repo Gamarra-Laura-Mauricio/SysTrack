@@ -1,0 +1,15 @@
+@startuml
+actor Solicitante
+participant "Interfaz SysTrack" as UI
+participant "API Incidentes" as API
+participant "Servicio de prioridad" as Priority
+database MySQL
+Solicitante -> UI : Completa reporte
+UI -> API : POST /api/incidents
+API -> Priority : calcular(impacto, urgencia)
+Priority --> API : prioridad
+API -> MySQL : INSERT incidente
+MySQL --> API : id
+API --> UI : 201 Created
+UI --> Solicitante : Confirmación
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+hide methods
+skinparam classAttributeIconSize 0
+class User { +id: bigint +full_name: string +email: string +password_hash: string +role: Role +active: boolean }
+enum Role { ADMIN TECHNICIAN REQUESTER }
+class Asset { +id: bigint +asset_code: string +name: string +category: string +brand: string +model: string +serial_number: string +location: string +assigned_to: string +status: AssetStatus }
+enum AssetStatus { OPERATIVO MANTENIMIENTO INACTIVO BAJA }
+class Incident { +id: bigint +title: string +description: text +impact: string +urgency: string +priority: string +status: string +resolution: text }
+class Maintenance { +id: bigint +type: string +description: text +scheduled_date: date +status: string +work_performed: text }
+class ActivityLog { +id: bigint +entity: string +entity_id: bigint +action: string +detail: json }
+User "1" -- "0..*" Incident : reports
+User "0..1" -- "0..*" Incident : assigned
+Asset "0..1" -- "0..*" Incident : associated
+Asset "1" -- "0..*" Maintenance : has
+User "1" -- "0..*" Maintenance : technician
+User "0..1" -- "0..*" ActivityLog : performs
+@enduml

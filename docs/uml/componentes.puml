@@ -1,0 +1,23 @@
+@startuml
+skinparam componentStyle rectangle
+[Interfaz Web] as UI
+[API REST Express] as API
+[Autenticación y RBAC] as AUTH
+[Servicio de Activos] as ASSET
+[Servicio de Incidentes] as INC
+[Servicio de Mantenimiento] as MAIN
+[Servicio de Indicadores] as DASH
+database "MySQL
+systrack_db" as DB
+UI --> API : HTTP/JSON
+API --> AUTH
+API --> ASSET
+API --> INC
+API --> MAIN
+API --> DASH
+AUTH --> DB
+ASSET --> DB
+INC --> DB
+MAIN --> DB
+DASH --> DB
+@enduml
