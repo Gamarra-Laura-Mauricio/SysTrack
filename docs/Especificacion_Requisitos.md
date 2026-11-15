@@ -49,3 +49,12 @@ Problema de inventario -> RF-03 a RF-05 -> módulo Activos -> pruebas TC-03 y TC
 Problema de mantenimiento -> RF-09 y RF-10 -> módulo Mantenimiento -> TC-06.
 Problema de incidentes -> RF-06 a RF-08 -> módulo Incidentes -> TC-05.
 Falta de control -> RF-11 -> Dashboard -> TC-07.
+
+
+## Requisitos añadidos en la versión 0.2
+- **RF-USER-01:** El administrador general podrá crear cuentas con los perfiles ADMIN, COORDINATOR, TECHNICIAN y REQUESTER.
+- **RF-USER-02:** El administrador general podrá activar o desactivar cuentas, sin poder desactivar su propia sesión.
+- **RF-TEAM-01:** El sistema mostrará un directorio de técnicos con disponibilidad calculada: INACTIVO, ASIGNADO o DISPONIBLE.
+- **RF-MNT-01:** El administrador o coordinador deberá asignar un técnico activo al programar un mantenimiento.
+- **RF-MNT-02:** Un técnico solo podrá completar mantenimientos asignados a su cuenta.
+- **RNF-UI-01:** La interfaz será responsive y utilizará una presentación visual consistente basada en capas translúcidas, contraste y microinteracciones, sin comprometer legibilidad ni accesibilidad básica.

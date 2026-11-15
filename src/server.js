@@ -6,6 +6,7 @@ app.use(helmet({contentSecurityPolicy:false})); app.use(cors({origin:process.env
 app.get('/api/health',async(req,res)=>{try{await db.query('SELECT 1');res.json({status:'ok',database:'connected'})}catch{res.status(503).json({status:'error',database:'unavailable'})}});
 app.use('/api/auth',require('./routes/auth.routes'));
 app.use('/api',authenticate);
+app.use('/api/users',require('./routes/users.routes'));
 app.use('/api/dashboard',require('./routes/dashboard.routes'));
 app.use('/api/assets',require('./routes/assets.routes'));
 app.use('/api/incidents',require('./routes/incidents.routes'));
