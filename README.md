@@ -85,4 +85,4 @@ Las rutas protegidas requieren `Authorization: Bearer <token>`.
 - Se corrige el tratamiento de fechas MySQL en la tabla y en el formulario de edición.
 
 ### Aplicación
-No requiere migración de base de datos respecto a v0.3. Reemplaza los archivos del proyecto, conserva `.env`, ejecuta `npm install` y `npm start`.
+No requiere migración de base de datos respecto a v0.3. Reemplaza los archivos del proyecto, conserva `.env`, ejecuta `npm install` y `npm start`..
